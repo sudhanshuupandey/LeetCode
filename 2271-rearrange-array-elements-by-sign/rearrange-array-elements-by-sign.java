@@ -11,6 +11,7 @@ class Solution {
                 n+=2;
             }
         }
+        System.gc();
         return ans;
     }
 }
