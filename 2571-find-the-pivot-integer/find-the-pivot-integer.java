@@ -1,9 +1,18 @@
 class Solution {
     public int pivotInteger(int n) {
-        int sum= n*(n+1)/2;
-        double a= Math.sqrt(sum);
-
-        if( a- Math.ceil(a)==0) return (int)a;
-        else return -1;
+        int leftBound = 1, rightBound = n;
+        int fullSum = (n * (n + 1)) / 2;
+        while (leftBound <= rightBound) {
+            int midNum = leftBound + (rightBound - leftBound) / 2;
+            int firstHlfSum = (midNum * (midNum + 1)) / 2;
+            int secondHlfSum = fullSum - firstHlfSum + midNum;
+            if (firstHlfSum == secondHlfSum)
+                return midNum;
+            else if (firstHlfSum < secondHlfSum)
+                leftBound = midNum + 1;
+            else
+                rightBound = midNum - 1;
+        }
+        return -1;
     }
 }
