@@ -10,6 +10,7 @@ class Solution {
             count = count + mp.getOrDefault(r,0);
             mp.put(pSum,mp.getOrDefault(pSum,0)+1);
         }
+        System.gc();
         return count;
     }
 }
